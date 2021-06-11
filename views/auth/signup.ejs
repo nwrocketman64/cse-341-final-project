@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+        <% if (errorMessage) { %>
+            <div class="error-message"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form" action="/signup" method="POST">
+            <label for="firstname">First Name: </label>
+            <input type="text" name="firstname" id="firstname" value="<%= first %>" required>
+            <label for="lastname">Last Name: </label>
+            <input type="text" name="lastname" id="lastname" value="<%= last %>" required>
+            <label for="email">E-Mail: </label>
+            <input type="email" name="email" id="email" value="<%= email %>" required>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required>
+            <label for="confirmPassword">Confirm Password: </label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+            <button class="btn" type="submit">Sign Up</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </form>
+<%- include('../includes/end.ejs') %>
