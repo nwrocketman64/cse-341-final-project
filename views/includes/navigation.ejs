@@ -5,6 +5,8 @@
                         <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
                     </li>
                     <% if (isAuthenticated) { %>
+                        <a class="<%= path === '/album' ? 'active' : '' %>" href="/album">Album</a>
+                        <a class="<%= path === '/upload' ? 'active' : '/upload' %>" href="/upload">Upload</a>
                     <% } %>
                     <% if (!isAuthenticated) { %>
                         <li class="mobile-nav__item">
