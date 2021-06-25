@@ -21,7 +21,7 @@ const User = require('./models/user');
 // Create the web app.
 const app = express();
 const PORT = process.env.PORT || 5000
-const MONGODB_URL = "mongodb+srv://development_user:altosax12@cluster0.mafxm.mongodb.net/shop?retryWrites=true&w=majority";
+const MONGODB_URL = "mongodb+srv://development_user:altosax12@cluster0.mafxm.mongodb.net/photo?retryWrites=true&w=majority";
 
 // Setup the sessions.
 const store = new MongoDBStore({

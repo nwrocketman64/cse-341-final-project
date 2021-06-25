@@ -75,8 +75,7 @@ exports.postLogin = (req, res, next) => {
                         req.session.isLoggedIn = true;
                         req.session.user = user;
                         return req.session.save(err => {
-                            console.log(err);
-                            res.redirect('/');
+                            res.redirect('/album');
                         });
                     }
                     return res.status(422).render('auth/login', {
@@ -164,7 +163,6 @@ exports.postSignup = (req, res, next) => {
 // The function logouts the user.
 exports.postLogout = (req, res, next) => {
     req.session.destroy(err => {
-        console.log(err);
         res.redirect('/');
     });
 };

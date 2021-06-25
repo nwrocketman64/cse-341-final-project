@@ -17,7 +17,7 @@ const router = express.Router();
 router.get('/', photoController.getHome);
 
 // GET /album
-router.get('/album', photoController.getPhotos);
+router.get('/album', isAuth, photoController.getPhotos);
 
 // Export the router.
 module.exports = router;
