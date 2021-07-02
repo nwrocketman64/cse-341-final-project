@@ -7,6 +7,7 @@ const csrf = require('csurf');
 const flash = require('connect-flash');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const multer = require('multer');
 
 // Import the error controller
 const errorController = require('./controllers/error');
@@ -17,6 +18,7 @@ const photoRoutes = require('./routes/photos');
 
 // Import the needed models
 const User = require('./models/user');
+const ImgModel = require('./models/photo');
 
 // Create the web app.
 const app = express();
@@ -30,6 +32,23 @@ const store = new MongoDBStore({
 });
 const csrfProtection = csrf();
 
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.minetype === 'image/png' || file.minetype === 'image/jpg' || file.minetype === 'image/jpeg'){
+    cb(null, true);
+  } else {
+    cb(null, false);
+  };
+};
+
 // Set render engine.
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -37,8 +56,9 @@ app.set('views', 'views');
 // Make the public folder open.
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the encoder.
+// Use the encoders.
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(multer({storage: fileStorage}).single('image'));
 
 // Create the session for the user.
 app.use(

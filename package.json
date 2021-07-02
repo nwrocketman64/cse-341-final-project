@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/nwrocketman64/cse-341-final-project#readme",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.9"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -33,6 +33,7 @@
     "express-session": "^1.17.2",
     "express-validator": "^6.12.0",
     "mongodb": "^3.6.9",
-    "mongoose": "^5.12.14"
+    "mongoose": "^5.13.0",
+    "multer": "^1.4.2"
   }
 }

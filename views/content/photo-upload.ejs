@@ -1,0 +1,14 @@
+<%- include('../includes/head.ejs') %>
+
+<%- include('../includes/navigation.ejs') %>
+        <section>
+            <h2>Select a Photo to Upload</h2>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label for="image">Image: </label>
+                <input type="file" name="image" id="image">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit">Add Photo</button>
+            </form>
+        </section>
+
+<%- include('../includes/end.ejs') %>

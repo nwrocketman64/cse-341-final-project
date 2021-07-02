@@ -19,5 +19,11 @@ router.get('/', photoController.getHome);
 // GET /album
 router.get('/album', isAuth, photoController.getPhotos);
 
+// GET /upload
+router.get('/upload', isAuth, photoController.getUploadPhoto);
+
+// POST /upload
+router.post('/upload', isAuth, photoController.postUploadPhoto);
+
 // Export the router.
 module.exports = router;

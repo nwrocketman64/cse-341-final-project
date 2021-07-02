@@ -2,7 +2,17 @@
 
 <%- include('../includes/navigation.ejs') %>
         <section>
-                <h2>Photos</h2>
+            <h2>Photos</h2>
+            <div>
+                <% items.forEach(function(image) { %>
+                <div>
+                    <h5><%= image.name %></h5>
+                    <p><%= image.date %></p>
+                    <img src="data:image/<%=image.img.contentType%>;base64,
+                            <%=image.img.data.toString('base64')%>">
+                </div>
+                <% }) %>
+            </div>
         </section>
 
 <%- include('../includes/end.ejs') %>
