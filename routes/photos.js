@@ -19,11 +19,23 @@ router.get('/', photoController.getHome);
 // GET /album
 router.get('/album', isAuth, photoController.getPhotos);
 
+// GET /view-photo/:id
+router.get('/view-photo/:id', isAuth, photoController.getPhotoDetails);
+
+// GET /download-photo/:id
+router.get('/download-photo/:id', isAuth, photoController.getPhoto);
+
 // GET /upload
 router.get('/upload', isAuth, photoController.getUploadPhoto);
 
 // POST /upload
 router.post('/upload', isAuth, photoController.postUploadPhoto);
+
+// GET /delete-photo/:id
+router.get('/delete-photo/:id', isAuth, photoController.getDeletePhoto);
+
+// POST /delete-photo
+router.post('/delete-photo', isAuth, photoController.postDeletePhoto);
 
 // Export the router.
 module.exports = router;

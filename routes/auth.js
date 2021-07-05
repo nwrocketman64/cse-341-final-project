@@ -2,15 +2,20 @@
 const express = require('express');
 const { check, body } = require('express-validator');
 
+// Import the auth controller and the user model.
 const authController = require('../controllers/auth');
 const User = require('../models/user');
 
+// Create the router.
 const router = express.Router();
 
+// GET /login
 router.get('/login', authController.getLogin);
 
+// GET /signup
 router.get('/signup', authController.getSignup);
 
+// POST /login
 router.post(
     '/login',
     [
@@ -24,6 +29,7 @@ router.post(
     authController.postLogin
 );
 
+// POST /signup
 router.post(
     '/signup',
     [
@@ -48,6 +54,8 @@ router.post(
     authController.postSignup
 );
 
+// POST /logout
 router.post('/logout', authController.postLogout);
 
+// Export the router.
 module.exports = router;

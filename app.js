@@ -18,7 +18,6 @@ const photoRoutes = require('./routes/photos');
 
 // Import the needed models
 const User = require('./models/user');
-const ImgModel = require('./models/photo');
 
 // Create the web app.
 const app = express();
@@ -30,8 +29,11 @@ const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions'
 });
+
+// Create the csrf protection.
 const csrfProtection = csrf();
 
+// Create the fileStorage.
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'images');
@@ -40,14 +42,6 @@ const fileStorage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
-
-const fileFilter = (req, file, cb) => {
-  if (file.minetype === 'image/png' || file.minetype === 'image/jpg' || file.minetype === 'image/jpeg'){
-    cb(null, true);
-  } else {
-    cb(null, false);
-  };
-};
 
 // Set render engine.
 app.set('view engine', 'ejs');
@@ -69,6 +63,8 @@ app.use(
     store: store
   })
 );
+
+// Add csrf protection
 app.use(csrfProtection);
 app.use(flash());
 

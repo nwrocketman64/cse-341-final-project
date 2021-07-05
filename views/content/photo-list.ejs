@@ -3,13 +3,18 @@
 <%- include('../includes/navigation.ejs') %>
         <section>
             <h2>Photos</h2>
-            <div>
+            <% if(items.length < 1){ %>
+            <p>
+                You have no photos in your album. Click on the upload
+                link above to add a photo to your album.
+            </p>
+            <% } %>
+            <div class="photo-list">
                 <% items.forEach(function(image) { %>
-                <div>
-                    <h5><%= image.name %></h5>
-                    <p><%= image.date %></p>
-                    <img src="data:image/<%=image.img.contentType%>;base64,
-                            <%=image.img.data.toString('base64')%>">
+                <div class="photo-items">
+                    <h3><%= image.name %></h3>
+                    <img src="data:image/<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" alt="<%= image.name %>">
+                    <a href="/view-photo/<%= image.id %>">View Photo</a>
                 </div>
                 <% }) %>
             </div>

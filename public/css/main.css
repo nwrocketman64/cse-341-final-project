@@ -111,6 +111,23 @@ img {
     margin: auto;
 }
 
+.photo-list {
+    text-align: center;
+}
+
+.photo-items {
+    padding-bottom: 10px;
+    border-bottom: #111 1px solid;
+}
+
+.photo-items:last-child {
+    border-bottom: #111 0px solid;
+}
+
+.photo-item {
+    text-align: center;
+}
+
 footer {
     text-align: center;
     font-size: 0.5em;
